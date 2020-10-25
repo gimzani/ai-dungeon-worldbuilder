@@ -1,0 +1,36 @@
+.world-info {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+}
+
+.work-area {
+  padding: 10px;
+}
+
+//-----------------------------------------  entries
+.world-entries-list__filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0 10px 0;
+}
+.world-entries-list__filter .input-group{
+  width: 300px;
+}
+
+.world-entry-item {
+  border: solid 1px #ccc; 
+  border-radius: 5px; 
+  margin: 5px;
+}
+
+.world-entry-item > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.world-entry-item > header > div.world-entry-buttons {
+  flex-shrink: 1;
+  margin-right: 5px;
+}
