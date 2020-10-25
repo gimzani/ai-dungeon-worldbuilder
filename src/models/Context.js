@@ -4,8 +4,14 @@ import WorldEntry from './WorldEntry'
 export default class Context {
 
   constructor() {
+    this.WorldEntriesFilePath = null;
     this.WorldInfos = [];
     this.Picklist = [];
+  }
+  
+  //---------------------------------------------------  WorldInfo List
+  setWorldEntriesFilePath(path) {
+    this.WorldEntriesFilePath = path;
   }
   
   //---------------------------------------------------  WorldInfo List
@@ -15,6 +21,7 @@ export default class Context {
       return new WorldEntry(item);
     });
     this.WorldInfos = array;
+    this.clearPicklist();
   }
   
   addWorldInfos(data) {
@@ -68,7 +75,7 @@ export default class Context {
       }
     });
     this.WorldInfos = array;
-    this.Picklist = [];
+    this.clearPicklist();
   }
 
   //--------------------------------------------------- picklist
@@ -96,6 +103,9 @@ export default class Context {
     }
   }
 
+  clearPicklist() {
+    this.Picklist = [];
+  }
 
   
   //--------------------------------------------------- 

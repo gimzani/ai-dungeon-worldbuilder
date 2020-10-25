@@ -11,6 +11,7 @@
 
 <script>
 //--------------------------------------------
+import swal from "sweetalert"
 import WorldEntry from '../models/WorldEntry'
 //--------------------------------------------
 export default {
@@ -23,11 +24,17 @@ export default {
   },
   methods: {
     createNew() {
-      if(this.worldKey) {
+
+      if(!this.context.WorldEntriesFilePath) {
+        swal("Cannot Add", "Please open or create a file first.", "warning");
+      } else if (!this.worldKey) {
+        swal("Cannot Add", "Please enter a Key.", "warning");
+      } else {
         let entry = new WorldEntry({ keys: this.worldKey });
         this.context.addEntry(entry);
         this.worldKey = null;
       }
+
     }
   }
 }

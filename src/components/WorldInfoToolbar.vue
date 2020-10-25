@@ -17,10 +17,10 @@
       <button class="btn btn-sm btn-outline-secondary" @click="addWorldEntriesDialog()" title="Merge File with current list" v-if="context.WorldInfos.length>0">
         <font-awesome-icon class="text-warning" icon="folder-plus" />
       </button>
-      <button class="btn btn-sm btn-outline-secondary" @click="saveWorldEntriesAsDialog()" title="Save World Entries As" v-if="worldEntriesFilePath">
+      <button class="btn btn-sm btn-outline-secondary" @click="saveWorldEntriesAsDialog()" title="Save World Entries As" v-if="context.WorldEntriesFilePath">
         <font-awesome-icon class="text-success" icon="file-export" />
       </button>   
-      <button class="btn btn-sm btn-outline-secondary" @click="saveWorldEntries()" title="Save World Entries" v-if="worldEntriesFilePath">
+      <button class="btn btn-sm btn-outline-secondary" @click="saveWorldEntries()" title="Save World Entries" v-if="context.WorldEntriesFilePath">
         <font-awesome-icon class="text-success" icon="save" />
       </button>  
     
@@ -37,11 +37,6 @@ import * as ipc from '../utils/ipc'
 export default {
   name: "WorldInfoToolbar",
   props: { context: Object },
-  data() {
-    return {
-      worldEntriesFilePath: null
-    }
-  },
   methods: {
       
     //-------------------------------------------------------------  save to and load from file
@@ -49,7 +44,7 @@ export default {
       dialog.showSaveDialog({ title: 'New WorldEntries File', filters: [{ name: "WorldEntries File", extensions:['json'] }] }).then(res => {
         let worldEntriesFilePath = res.filePath;
         if(worldEntriesFilePath) {            
-          this.worldEntriesFilePath = worldEntriesFilePath;
+          this.context.setWorldEntriesFilePath(worldEntriesFilePath);
           this.setWorldInfos([]);
           this.saveWorldEntries();
         }
@@ -61,7 +56,7 @@ export default {
         let worldEntriesFilePath = res.filePaths[0]; 
         if(worldEntriesFilePath) {
           ipc.loadWorldEntries(worldEntriesFilePath).then(worldEntriesData => {    
-            this.worldEntriesFilePath = worldEntriesFilePath;
+            this.context.setWorldEntriesFilePath(worldEntriesFilePath);
             this.setWorldInfos(worldEntriesData);
           });
         }
@@ -83,14 +78,14 @@ export default {
       dialog.showSaveDialog({ title: 'Save WorldEntries File As', filters: [{ name: "WorldEntries File", extensions:['json'] }] }).then(res => {
         let worldEntriesFilePath = res.filePath;
         if(worldEntriesFilePath) {            
-          this.worldEntriesFilePath = worldEntriesFilePath;
+          this.context.setWorldEntriesFilePath(worldEntriesFilePath);
           this.saveWorldEntries();
         }
       })
     },
 
     saveWorldEntries() {
-      ipc.saveWorldEntries({filePath: this.worldEntriesFilePath, worldEntries: this.context.WorldInfos}).then(() => {
+      ipc.saveWorldEntries({filePath: this.context.WorldEntriesFilePath, worldEntries: this.context.WorldInfos}).then(() => {
         this.$toasted.global.saveProject();
       });
     },

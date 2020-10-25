@@ -16,7 +16,7 @@ MAD PROPS to Nick Walton and the team at [Latitude](https://latitude.io/)
 1. This is unofficial.  I am not an employee of Latitude, nor do I have working knowledge of how AI-Dungeon works.  This is just my stab at making something useful.
 ----
 
-## To Use the App:
+## Building the App:
 
 This is a JavaScript, Electron app using Vue as the front end.  **YOU MUST** have [NodeJS](https://nodejs.org/en/) installed.
 
@@ -42,6 +42,44 @@ This will compile it into an executable in a folder called **dist_electron**
 It also makes and installer, which is pretty cool.
 
 From there, install it and have fun.
+
+---
+
+## Using the App:
+
+Here is a shot of the app with some Entries Loaded.  When you first open it, it will not have anything listed.
+
+<img src="https://raw.githubusercontent.com/gimzani/ai-dungeon-worldbuilder/main/screenshots/Screenshot.png" style="width:400px;height:auto">
+
+To get items into the app, use the File Tools.  (Roll over the buttons for tooltips)
+
+But what they essentially do is:
+* Create a New File
+* Open and existing file
+* Merge a file in with an existing list
+* Export the current list
+* Save the current list (to whatever file you have open.)
+
+<img src="https://raw.githubusercontent.com/gimzani/ai-dungeon-worldbuilder/main/screenshots/FileTools.png" style="width:400px;height:auto">
+
+So - If you have a new file and no list, enter a Key into the "New Entry" box and click the "Add" (plus) button.  You should see it in the list.
+
+<img src="https://raw.githubusercontent.com/gimzani/ai-dungeon-worldbuilder/main/screenshots/NewEntry.png" style="width:400px;height:auto">
+
+Use the "blue chevron" to expand each item and edit the entry.
+
+<img src="https://raw.githubusercontent.com/gimzani/ai-dungeon-worldbuilder/main/screenshots/ExpandedEntry.png" style="width:400px;height:auto">
+
+If things get to hecktic in the file, you can delete entries one at a time or in a batch by checking the checkbox and clicking the "Remove Selected" button.
+
+You can also use the filter box to show only the items related to a keyword in the entry.  (Like sword, or dragon or whatever)
+
+<img src="https://raw.githubusercontent.com/gimzani/ai-dungeon-worldbuilder/main/screenshots/filtered.png" style="width:400px;height:auto">
+
+And that's it.
+
+Now you can library your World Infos and mix and match to your heart's content.
+
 
 ---
 And to the devs at Latitude.  If you want or need help, you have my email.  I'm on your forums as 'gimzani'.
