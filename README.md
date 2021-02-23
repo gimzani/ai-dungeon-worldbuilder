@@ -85,3 +85,7 @@ Now you can library your World Infos and mix and match to your heart's content.
 And to the devs at Latitude.  If you want or need help, you have my email.  I'm on your forums as 'gimzani'.
 
 Enjoy!
+
+
+---
+Shout-out to Lex-DRL for keeping me on my toes with a quick patch.  ;)  Thanks!
