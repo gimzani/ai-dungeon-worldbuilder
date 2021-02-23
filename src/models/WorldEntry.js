@@ -4,7 +4,7 @@ export default class WorldEntry {
     this.id = Math.random();
     this.keys = null;
     this.entry = null;
-    this.isNotHidden = true;
+    this.hidden = false;
 
     if(options) {
       this.init(options);
@@ -16,7 +16,7 @@ export default class WorldEntry {
     this.id = parseFloat(options.id) || this.id;
     this.keys = options.keys || this.keys;
     this.entry = options.entry || this.entry;
-    this.isNotHidden = options.isNotHidden || this.isNotHidden;
+    this.hidden = options.hidden || this.hidden;
 
   }
 }
