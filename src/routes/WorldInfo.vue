@@ -1,7 +1,7 @@
 <template>
 <div class="world-info">
   <div>
-    <WorldInfoToolbar :context="context"></WorldInfoToolbar>
+    <WorldInfoToolbar :context="context" @set-theme="$emit('set-theme', $event)"></WorldInfoToolbar>
   </div>
   <div class="work-area">
     <div class="ml-auto" style="width:350px;">      

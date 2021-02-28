@@ -19,6 +19,7 @@
 }
 
 .world-entry-item {
+  background-color: #fff;
   border: solid 1px #ccc; 
   border-radius: 5px; 
   margin: 5px;
@@ -33,4 +34,13 @@
 .world-entry-item > header > div.world-entry-buttons {
   flex-shrink: 1;
   margin-right: 5px;
+}
+//-----------------------------------------  drag
+
+.flip-list-move {
+  transition: transform 0.5s;
+}
+
+.world-entry-item .handle:hover {
+  cursor:ns-resize;
 }

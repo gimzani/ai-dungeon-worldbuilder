@@ -4,6 +4,9 @@
   <header>
     <div class="p-2">
       <div>
+        <span class="handle" style="margin-right:10px;" v-if="canDrag">
+          <font-awesome-icon class="text-muted" icon="grip-vertical" />
+        </span>
         <label class="nomargin">
           <input type="checkbox" v-model="isChecked" @change="toggleSelection()">
           {{item.keys}}
@@ -47,7 +50,8 @@ export default {
   name: "WorldEntryItem",
   props: { 
     item: Object,
-    context: Object
+    context: Object,
+    canDrag: Boolean
   },
   data() {
     return {

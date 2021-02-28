@@ -1,5 +1,5 @@
 <template>
-<router-view :context="context"></router-view>
+<router-view :class="theme" :context="context" @set-theme="theme=$event"></router-view>
 </template>
 
 <script>
@@ -10,7 +10,8 @@ export default {
   name: 'App',
   data() {
     return {
-      context: null
+      context: null,
+      theme: 'light'
     }
   },
   created() {

@@ -9,9 +9,28 @@
     <WorldInfosListFilter :context="context" v-model="query" @filter="filterEntries()"></WorldInfosListFilter>
   </div>
   <div class="container">
-    <div class="world-entry" v-for="e in filteredEntries" :key="e.id">
-      <WorldEntryItem :item="e" :context="context" @remove="removeEntry($event)"></WorldEntryItem>
+
+
+    <div v-if="query">
+      <div class="world-entry" v-for="e in filteredEntries" :key="e.id">
+        <WorldEntryItem :item="e" :context="context" @remove="removeEntry($event)" :can-drag="false"></WorldEntryItem>
+      </div>   
     </div>
+  
+    <draggable v-else v-model="context.WorldInfos"
+      handle=".handle"  
+      group="world-infos" 
+      @start="drag=true" 
+      @end="drag=false" 
+      :animation="200">
+      <transition-group type="transition" :name="!drag ? 'flip-list' : null">
+        <div class="world-entry" v-for="e in context.WorldInfos" :key="e.id">
+          <WorldEntryItem :item="e" :context="context" @remove="removeEntry($event)" :can-drag="true"></WorldEntryItem>
+        </div>        
+      </transition-group>
+    </draggable>
+
+
   </div>
 </div>
 </template>
@@ -19,26 +38,25 @@
 <script>
 //-----------------------------------------------
 import swal from 'sweetalert'
+import draggable from 'vuedraggable'
 import WorldEntryItem from './WorldEntryItem'
 import WorldInfosListFilter from './WorldInfosListFilter'
 //-----------------------------------------------
 export default {
   name: "WorldinfosList",
-  components: { WorldEntryItem, WorldInfosListFilter },
+  components: { WorldEntryItem, WorldInfosListFilter, draggable },
   props: {
     context: Object
   },
   data() {
     return {
       query: null,
+      drag: false,
       filteredEntries: []
     }
   },
-  computed: {
-    worldEntries() { return this.context.WorldInfos }
-  },
   watch: {
-    worldEntries() { this.init(); }
+    context() { this.init(); }
   },
   mounted() { this.init(); },
   methods: {
@@ -47,19 +65,37 @@ export default {
     },
     filterEntries() {
       if(this.query != null) {
-        let filteredItems = this.worldEntries.filter(item => {
-          if(item.entry.toLowerCase().indexOf(this.query.toLowerCase()) >= 0) {
+        let filteredItems = this.context.WorldInfos.filter(item => {
+          let query = this.query ? this.query.toLowerCase() : '';
+          if(query.length>0) {
+
+            let isTitle = (item.keys && item.keys.indexOf(query) >= 0);
+            let isInContent = (item.entry && item.entry.toLowerCase(query).indexOf() >= 0);
+
+            if(isTitle || isInContent) {
+              return item;
+            }
+          } else {
             return item;
           }
+
         });
         this.filteredEntries = filteredItems;
       } else {
-        this.filteredEntries = [...this.worldEntries];
+        this.filteredEntries = [...this.context.WorldInfos];
       }
     },
+    setEntries(evt) {
+      let entries = [...this.context.WorldInfos];
+      entries.splice(evt.moved.oldIndex, 1);
+      entries.splice(evt.moved.newIndex, 0, evt.moved.element);
+      this.context.setWorldInfos(entries);      
+    },
+
     removeEntry(item) {      
       this.context.removeEntry(item);
     },
+
     batchRemoveEntries() {
       swal({
         title: "Are you sure?",

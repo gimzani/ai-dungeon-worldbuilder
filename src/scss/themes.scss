@@ -1,0 +1,45 @@
+
+
+//themes 
+
+.world-info {
+  height: 100%;
+  &.dark {
+    background-color: #111;
+
+    h1,h2,h3,h4,h5,h6 {
+      color:#eee;
+    }
+
+    .btn {
+      background-color: #333;
+    }
+
+    input[type=text],
+    input[type=search],
+    textarea {
+      color:#000;
+      background-color: #999;
+      border-color: #aaa;
+    }
+
+    .input-group-text { 
+      color:#000;
+      background-color: #666;
+      border-color: #aaa;
+    }
+
+    .world-entry-item {
+      background-color: #444;
+      color: #eee;
+
+    }
+
+  }
+  &.light {
+    background-color: #fff;
+    h1,h2,h3,h4,h5,h6 {
+      color:#222;
+    }
+  }
+}

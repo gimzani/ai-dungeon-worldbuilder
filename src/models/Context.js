@@ -17,10 +17,14 @@ export default class Context {
   //---------------------------------------------------  WorldInfo List
 
   setWorldInfos(data) {
-    let array = data.map(item => {
-      return new WorldEntry(item);
-    });
-    this.WorldInfos = array;
+    if(data) {
+      let array = data.map(item => {
+        return new WorldEntry(item);
+      });
+      this.WorldInfos = array;
+    }else {
+      this.WorldInfos = [];
+    }
     this.clearPicklist();
   }
   
@@ -38,7 +42,7 @@ export default class Context {
       }
     });
     this.WorldInfos = worldInfos;
-    this.sortWorldInfos();
+    //this.sortWorldInfos();
   }
 
   sortWorldInfos() {

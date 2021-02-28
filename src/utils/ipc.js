@@ -1,5 +1,5 @@
 
-const ipc = require('electron').ipcRenderer;
+const { ipcRenderer:ipc } = window.require('electron');
 
 // --------------------------------------------------
 export function saveWorldEntries(obj) {
