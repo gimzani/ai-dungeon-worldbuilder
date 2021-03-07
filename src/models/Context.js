@@ -42,13 +42,6 @@ export default class Context {
       }
     });
     this.WorldInfos = worldInfos;
-    //this.sortWorldInfos();
-  }
-
-  sortWorldInfos() {
-    let array = [...this.WorldInfos];
-    array.sort((a, b) => (a.keys > b.keys) ? 1 : -1);
-    this.WorldInfos = array;
   }
   
   //--------------------------------------------------- add / remove
@@ -56,7 +49,6 @@ export default class Context {
   addEntry(entry) {
     let array = [...this.WorldInfos];
     array.push(entry);
-    array.sort((a, b) => (a.keys > b.keys) ? 1 : -1);
     this.WorldInfos = array;
   }
 
