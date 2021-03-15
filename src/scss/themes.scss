@@ -45,3 +45,46 @@
     }
   }
 }
+
+// https://css-tricks.com/custom-scrollbars-in-webkit/
+
+::-webkit-scrollbar, ::-webkit-scrollbar-button, ::-webkit-scrollbar-corner {
+  height: 12px;
+  width: 12px;
+  background: #000;
+}
+
+/*
+::-webkit-scrollbar-button:vertical {
+  height: 6px;
+}
+
+::-webkit-scrollbar-button:horizontal {
+  width: 6px;
+}
+*/
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 1ex;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+::-webkit-scrollbar-thumb, ::-webkit-scrollbar-button {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb:hover, ::-webkit-scrollbar-button:hover {
+  background: #444;
+}
+
+::-webkit-scrollbar-thumb:active, ::-webkit-scrollbar-button:active {
+  background: #666;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #111;
+}
+
+::-webkit-scrollbar-track:active {
+  background: #222;
+}
