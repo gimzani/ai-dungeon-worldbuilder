@@ -6,7 +6,7 @@ And even though you can download the **worldEntries.json** file and upload it on
 
 Yeah - so did I.  So, I built one!  (You're welcome! ;) )
 
-[windows only installer](https://github.com/gimzani/ai-dungeon-worldbuilder/blob/main/installer/aid-wb2%20Setup%200.1.0.exe)
+[windows only installer](https://github.com/gimzani/ai-dungeon-worldbuilder/blob/main/installer/aid-wb2%20Setup%200.1.1.exe)
 
 ## First things first
 MAD PROPS to Nick Walton and the team at [Latitude](https://latitude.io/)
