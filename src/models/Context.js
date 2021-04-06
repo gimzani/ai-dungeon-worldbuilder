@@ -7,6 +7,7 @@ export default class Context {
     this.WorldEntriesFilePath = null;
     this.WorldInfos = [];
     this.Picklist = [];
+    this.isPristine = true;
   }
   
   //---------------------------------------------------  WorldInfo List
@@ -24,6 +25,7 @@ export default class Context {
       this.WorldInfos = array;
     }else {
       this.WorldInfos = [];
+      this.isPristine = true;
     }
     this.clearPicklist();
   }
@@ -105,5 +107,8 @@ export default class Context {
 
   
   //--------------------------------------------------- 
+  setPristine(pristine = true) {
+    this.isPristine = pristine;
+  }
 
 }

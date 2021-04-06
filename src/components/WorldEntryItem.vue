@@ -29,11 +29,11 @@
   <div  class="p-2" v-show="open">    
     <div class="form-group">
       <label for="title">Keys: (comma separated)</label>
-      <input id="title" type="text" class="form-control" v-model="item.keys" />
+      <input id="title" type="text" class="form-control" v-model="item.keys" @input="setDirty()" />
     </div>
     <div class="form-group">
       <label for="title">Entry Text:</label>
-        <textarea ref="author" class="form-control" rows="1" v-model="item.entry" @input="autoExpand($event.target)"></textarea>
+        <textarea ref="author" class="form-control" rows="1" v-model="item.entry" @input="setDirty(); autoExpand($event.target)"></textarea>
     </div>
   </div>
 
@@ -79,6 +79,7 @@ export default {
       })
       .then((willDelete) => {
         if (willDelete) {
+          this.setDirty();
           this.$emit('remove', item);
         } 
       });
@@ -109,6 +110,10 @@ export default {
                   + parseInt(computed.getPropertyValue('padding-bottom'), 10)
                   + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
       el.style.height = height + 'px';
+    },
+
+    setDirty() {
+      this.context.setPristine(false);
     }
 
   }

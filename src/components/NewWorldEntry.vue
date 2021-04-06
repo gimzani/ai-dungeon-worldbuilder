@@ -32,6 +32,7 @@ export default {
       } else {
         let entry = new WorldEntry({ keys: this.worldKey });
         this.context.addEntry(entry);
+        this.context.setPristine(false);
         this.worldKey = null;
       }
 

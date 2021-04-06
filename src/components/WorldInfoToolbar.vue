@@ -2,7 +2,10 @@
 <div class="toolbar">
 
   <div class="app-header__title">
-    <h1 class="nomargin">World Infos</h1>
+    <h1 class="nomargin">
+      World Infos
+      <span class="text-danger" v-if="!context.isPristine">*</span>
+    </h1>
   </div>
 
   <div>
@@ -110,7 +113,8 @@ export default {
     },
 
     saveWorldEntries() {
-      ipc.saveWorldEntries({filePath: this.context.WorldEntriesFilePath, worldEntries: this.context.WorldInfos}).then(() => {
+      ipc.saveWorldEntries({filePath: this.context.WorldEntriesFilePath, worldEntries: this.context.WorldInfos}).then(() => {        
+        this.context.isPristine = true;
         this.$toasted.global.saveProject();
       });
     },
