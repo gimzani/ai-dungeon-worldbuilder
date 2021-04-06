@@ -1,9 +1,14 @@
 
 .toolbar {
+  position: fixed;
   display: flex; 
   justify-content: space-between; 
   align-items: center;
+  width: 100%;
   padding: 10px; 
+  z-index: 100;
+  background-color: #fff;
+  border-bottom: solid 1px #efefef;
   h1 {
     font-size: 28px;
   }

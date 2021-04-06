@@ -1,9 +1,10 @@
 <template>
 <div>
-  <div>
-    <WorldInfoToolbar :context="context" @set-theme="$emit('set-theme', $event)"></WorldInfoToolbar>
+  <WorldInfoToolbar :context="context" @set-theme="$emit('set-theme', $event)"></WorldInfoToolbar>
+
+  <div style="padding-top: 50px">    
+    <router-view :class="theme" :context="context" @set-theme="theme=$event"></router-view>
   </div>
-  <router-view :class="theme" :context="context" @set-theme="theme=$event"></router-view>
 </div>
 </template>
 
