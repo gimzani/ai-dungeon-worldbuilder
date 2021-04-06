@@ -1,8 +1,5 @@
 <template>
 <div class="world-info">
-  <div>
-    <WorldInfoToolbar :context="context" @set-theme="$emit('set-theme', $event)"></WorldInfoToolbar>
-  </div>
   <div class="work-area">
     <div class="ml-auto" style="width:350px;">      
       <NewWorldEntry :context="context"></NewWorldEntry>
@@ -14,13 +11,12 @@
 
 <script>
 //--------------------------------------------
-import WorldInfoToolbar from '../components/WorldInfoToolbar'
 import NewWorldEntry from '../components/NewWorldEntry'
 import WorldInfosList from '../components/WorldInfosList'
 //--------------------------------------------
 export default {
   name: "WorldInfo",
   props: { context: Object },
-  components: { WorldInfoToolbar, WorldInfosList, NewWorldEntry }
+  components: { WorldInfosList, NewWorldEntry }
 }
 </script>

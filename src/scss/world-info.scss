@@ -9,7 +9,7 @@
 
 //-----------------------------------------  entries
 .world-entries-list__filter {
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   padding: 5px 0 10px 0;
@@ -44,3 +44,4 @@
 .world-entry-item .handle:hover {
   cursor:ns-resize;
 }
+

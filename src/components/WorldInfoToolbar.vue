@@ -11,6 +11,12 @@
         <font-awesome-icon class="text-info" icon="eye" />
       </button>
     </div>
+    <div class="btn-group mr-3">      
+      <button class="btn btn-sm btn-outline-secondary" @click="toggleEditor()">
+        <font-awesome-icon class="text-info" icon="code" title="Json Edit Mode" v-if="editor === 'WorldInfo'" />
+        <font-awesome-icon class="text-info" icon="pen" title="List Edit Mode" v-else />
+      </button>
+    </div>
     <div class="btn-group">
       <button class="btn btn-sm btn-outline-secondary" @click="newWorldEntriesDialog()" title="New World Entries File (.json)">
         <font-awesome-icon class="text-warning" icon="file" />
@@ -45,7 +51,8 @@ export default {
   props: { context: Object },
   data() {
     return {      
-      theme: null
+      theme: null,
+      editor: "WorldInfo"
     }
   },
   created() {
@@ -132,8 +139,13 @@ export default {
       }
       localStorage.setItem('theme', this.theme);
       this.$emit('set-theme', this.theme);
-    }
+    },
 
+    
+    toggleEditor() {
+      this.editor = (this.editor === 'WorldInfo') ? 'JsonEditor' : 'WorldInfo';
+      this.$router.push({ name: this.editor });
+    }
     //------------------------------------------------------------- 
   }
 }
