@@ -88,7 +88,7 @@ if (isDevelopment) {
 
 //===================================================================================  ipc calls
 ipc.on('save-file', function(event, {filePath, worldEntries}) {
-  let content = JSON.stringify(worldEntries);
+  let content = JSON.stringify(worldEntries, null, "  ");
   fs.writeFile(filePath, content, function(err){
     if(err){
       return console.log(err);
